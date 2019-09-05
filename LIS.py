@@ -1,3 +1,6 @@
+https://www.geeksforgeeks.org/longest-increasing-subsequence-dp-3/
+
+# Dyanimic programming solution
 def lis(arr):
     n = len(arr)
     lis = [1]*n
