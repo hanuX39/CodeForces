@@ -6,7 +6,9 @@ def XOR(a,b,n):
         return a
     elif n == 1:
         return b
-    return (XOR(a,b,n-1))^(XOR(a,b,n-2))
+    elif n == 2:
+        return a^b
+    return XOR(a,b,n % 3)
 
 
 if __name__ == "__main__":
