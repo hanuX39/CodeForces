@@ -1,0 +1,40 @@
+def rotate_string(A):
+    p = [char for char in A]
+    i = 1
+    while(True):
+        k = [""]*len(p)
+        for j in range(len(p)):
+            k[(len(p)+j-i)%len(p)] = p[j]
+        if A == "".join(k):
+            return i
+        p = k
+        i += 1
+        
+def find_lcm(num1, num2): 
+    if(num1>num2): 
+        num = num1 
+        den = num2 
+    else: 
+        num = num2 
+        den = num1 
+    rem = num % den 
+    while(rem != 0): 
+        num = den 
+        den = rem 
+        rem = num % den 
+    gcd = den 
+    lcm = int(int(num1 * num2)/int(gcd)) 
+    return lcm
+def solve(A):
+    l = [rotate_string(a) for a in A]
+    print(l)
+    lcm = find_lcm(l[0] , l[1]) 
+    for i in range(2, len(l)): 
+    	lcm = find_lcm(lcm, l[i])
+    print(lcm%(10**9+7))
+
+import timeit
+start = timeit.default_timer()
+solve("baaabaababbabbbabaabbaaaababbababbbabbbbabbbaabaaabbaababbbaa bbbababbbbaaaaabaabaababbbbaabababbbbaaabaabbaabbabbbbabbbbbaaaabbabbabababaabbbbbaba abababbabbbbaaababbbbabababababbbbbaaaaababbabbbaaababaaababbbbbaabbabbababaaababb bbabbbbabababbbaaabaabbabababaaabaaabbbaaaababbaaaaabbabbbbabbbbb baaababbbbba babbaabbaaaabbbaaaaababbbbbaabbbaaaabbbbbbbaabbabbaabaabbbbbabaabaaabbbaabaaabababaabababa bbbabbabaabaaaabaabbaababbbb a abbaaaaaaababbbabbbabaaabbbbabbabbabbababaaabbaaabbabbababaabbaaaababbaabaabaababaabb aaaaabbbbabaaabaabaaaaabbaabbbabbabababaaaaabaabbbabbaaaaaabaaababb aababbbabbbaabbaaaaaaaaa aaaabbaaaababbbbaababbabaaaaaabbabbabbabbbbbabaabbaabaa babbaaababbbabaaaababbaaababbaaa aabaaaaabbaaaaaababaabbbbababbabbbbabaaabaabb baaabbbaababbbbbaabaaaaabbbbbaaaaabbbababababaaabbabbaaabbaababbaabaaaaaabaaaaabbaabaabbbbaabbaab abbababaabaaaa bbababbabbbabbbabbabaabaaababbaaaababaabaabbbbabaaaaabbaaaabbabbaabbbaabaaa baababbaaaaaaabbaaaabaaaaabaabbbaaaababbabababaaabbbbbbbbabababbaaababbaabbaaabababababaaaaaaa babaaababaabbaabbabbbbaaaaaaaabbab abbbaababbaaabbbabbabbbbbbababbababbaabbbaabbbababababaaabbaaab aabbbaaaaaabaabaabaaaaaabbbababaaabbbbabaabaaaaababbbbbabaaaaaabababbabbaabbab baaababbbaabaaababaaaabbbbaababaaaabababbaaaaabbabbaaaabbabaaaaaaabababbaabbaaaaabbabbba aaaaaabaabbabaabbbbabaaabababbbbbbbbaabaababbaababbbbbaabbaabababaabbbbbabaaaa ababbbbbabaaaababbabaaabaabaabbabbbaabbaabaabbabbbabbabbaaaaababbabbbaab abbab baaabbbbbabaaaabbaabbabaabbabbaabbbbaaababbababbabaaa aaaaaabbaaabbaabbaabbababbabbaaaaaabababbaabaaabbbaabbaababaabab aaababbabaaaabbbababbaaabbaabbaababb abaababbbababaabbabaab abbbbbbababaabbbbbabaababbbbaabaaabbbaabbbbbaaabbabaaaaaabbabaabbbbaabbbaaaaaaaaabaaba bbabaababbbababaaaa aaaaabaabababbaabbababbbbabbabbbbabbbaaaabbaababaaabbbaaaabababbabaabaabbbbbabbbbbaabaababbaa baababababaabbbaabbabaaabbbbbbaaaababbbbbababbababbbabbbababaabaabbbaabbaabbbbabbbbbbaabbb abaaabbbaaababbaaaaabababbbababbbabbbbbbbbbbaabbaabaaaabbbbabbbbbbaaababbbab aababbababbbabbbbaaaabaabbbababbbabaabaaabbbaaababbbabbbaabaaabb baaaaabbaabaabbbaababaabbabbababbabbbaababbbaaabaabbabaaaababbbaaabbbbababababaabbabaabaabababb aabbbbaabbbbabbbabaaaababbabbbabababbabababbbaababaabbaaaabbabaabababbaabbabbaabbababaaaaababaaaaaa baaababbaaaaaaaaabaabbbabbbabbbaabbbbaaaababbabbbb aaabaaaabbbabbbbabbaaaabbb aababbaabaababbababaaabbaabbbababaaaaaabb bbbabaaaa aabba abbabaabaaaaababaabbabbbbbbbabababbaabbaabbaabbababababaaababbbbbabbabbaaaababbbbbbaba baaabbbbaaababbaababbbababaabbaabaabaaaaaaaaabaaaababbbbbbbaabaaabbabbabbab bbbabaaaabbbaabbbb baabbbaaaabaaaba aabababbaaaabbbabbbababbbbbaabbabbaabb abaababbbaaababbaaaaaabbbabaabaaaaababaaababbbabbbbbbbaabaabbabbbbbbbbbbabaaabb abbbabbbbabaaaababbbaaabaababaabbbabaabaaaaaaaaabbbabbbb aabaababbbbbabbaaabaababbaaabaabaababbbabaababaabbabaaabababbaabaabbbaaaaaaabaabbbabbbb abbbbaaaabbbbbabbaabaaabbaabbbbbaaaaaaaabbaabaaaaabaabbaabbbbabbabbbabbbbbaabaabaababaababbbbaaab bbbabaababbbbbbababaabbbabbabaaaaaabaaababababbbbabbbbabababaabaa bbabaaaababababbaaaaaaaabaaaabbbabaabaaaabbbbaabaaaaaaababbaabbaabaabaabbbaabbaaba a bbaabaaabaaaaabababaababbabbabbbabbbbbbabaababbbbaaaaabbaababaaaabb bbaabaababbbabba bbbbabbbbbbbaaab aabaababaaaaabbbaaabbbbaaabaaabababbbbabbabbbaabb aabbbbbaabababbbaaaabbababbaaabbbaaaaaaababbaaaaaabbbbabbaabababbbb bbbaaaaaaaaabb a aaaaabbbaaabaaabbabaababababbaabaaaaabbababbabbbbabaaababbbababaabaaaaaaabba ababbabbbbaaaababbbbabbaababbaabbaaaabbbabbbbabbaaa abaababaabbbbaabbbaabbbaaababbabbabaaaaaabbbbbbbbbbabaabaabbb aabbabaabaaabbaaababbbbbaabbbbaabbbaababbabbabbaabababbababbbbbbaabaabbbabaaaa bbaaaababaaabbbaaabaababbbabbabababbaaabaaaabbabbaabbababbbababaaaaaaaabaabbbbbbbbaabbaaabababa babaabbababababbbababaaabbbbabaabbababbbbbbabbbbbbbabaaabaabbabbbbabaaabbbaaabbbababbaa aabaabbbababbaaababaaababbaaaaaaaaaabbbbbbaabbbabaabaaaabaababaabaaaabbbaabbbabaaaabaabbabb ababbabbbbabbaaaababbaababbaaaabbaaaaaabbaa aaabaaabbabbbaabaaabbbbbbbbaabaaaabaabbbbabaabaabababbaaabaaaabaaaabaaabababaabaabaaa aabbbabaaaabbabbabbaabaababaababbaaaabaabbbabaababbaabaaabaaaabaabaabbbaaab bbbbaabaaaaabaaabaabbaaabbbbbabababbabbabaaaababbaba bbaaaabababbbabababbaaabababababaabaababbbaababaaaaaaaabbaaababbabbbabababbbbaabbabbababaabbabbbaaaa ababaaababaabbaaabaabababaabaababaabaaaaaaabaababaaaababbaabaaa aabaabaaaabaababbaabaaabbabbabbabaabbaab bbaababaaaaaabbbabbbaaaaa bbabbbaaaaabaaaaaabababbbbbabbaaa babaabaabaabaabbabbbababbbababbbb bbabbbbbabbbbaaabababababbbabababbaaabbababaaaaaaaaaabaabbaab aaaaaaababbabaabaabaaabaaabaaaabaababbbbabbbbbbbaabaaabababbbbabbaaabbaaabbbbaab bbbaaabbbaaabbbbbaabaabbabaabbbbbbbbbaaaaaabababbbabbabbbbaabbbaaabbaabbabaabbaaaaababbbabababbbabaa abbbaaababbabababaaaaababaaaaabaabaababbbabaaaaabbabbbbabbba aaabaaabbbabbbbbbbaaaabbbabbbbbbbbbabbb bbbaaabaaaaaaabbaaabbbababbbbababaaabbabbabbaabab bababbbabaaaaabaaaaabbaabbaabbbbaabbaaabbabbaaaaaaabbbbaaaabbaababbaabbbbbaabaaaabbaabaabbbabaab".split(' '))
+stop = timeit.default_timer()
+print(stop-start)
