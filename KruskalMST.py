@@ -1,3 +1,5 @@
+https://www.geeksforgeeks.org/kruskals-minimum-spanning-tree-algorithm-greedy-algo-2/
+
 class Graph:
     def __init__(self,num_vertices):
         self.vertices = num_vertices
